@@ -1,0 +1,11 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: {{ include "k8s-micro-frontend.fullname" . }}
+  labels:
+    {{- include "k8s-micro-frontend.labels" . | nindent 4 }}
+data:
+  # AWS_REGION: {{ .Values.region | default "us-east-2" }}
+  # QUEUE_URL: {{ .Values.sqs_queue_url | default "https://sqs.us-east-2.amazonaws.com/463861443237/admin-view" }}
+  AWS_REGION: {{ .Values.region }}
+  QUEUE_URL: {{.Values.sqs_queue_url }}
